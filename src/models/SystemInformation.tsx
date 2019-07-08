@@ -6,7 +6,7 @@ export class SystemInformation {
     Icon: string;
     
     /**
-     * The purpose of this class is to represent the details of a weather
+     * The purpose of this class is to represent the details of the system
      */
     constructor(id: number, main:string, description:string, icon:string) {
         this.Id = id;

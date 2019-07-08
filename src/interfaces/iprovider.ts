@@ -1,5 +1,8 @@
 import { Observable } from 'rxjs';
 
+/**
+ * Base interface for HTTP verbs
+ */
 export class IProvider {
 
     constructor() { }
