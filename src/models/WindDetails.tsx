@@ -1,13 +1,10 @@
-export class WindDetails {
+export default class WindDetails {
 
-    Speed: number;
-    Deg: number;
-    
-    /**
-     * The purpose of this class is to represent the details of a wind
-     */
+    speed: number;
+    deg: number;
+
     constructor(speed: number, deg: number) {
-        this.Speed = speed;
-        this.Deg = deg;
+        this.speed = speed;
+        this.deg = deg;
     }
 }

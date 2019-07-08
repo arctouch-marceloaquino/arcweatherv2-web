@@ -1,17 +1,14 @@
-export class SystemInformation {
+export default class SystemInformation {
 
-    Id: number;
-    Main: string;
-    Description: string;
-    Icon: string;
-    
-    /**
-     * The purpose of this class is to represent the details of the system
-     */
+    id: number;
+    main: string;
+    description: string;
+    icon: string;
+
     constructor(id: number, main:string, description:string, icon:string) {
-        this.Id = id;
-        this.Main = main;
-        this.Description = description;
-        this.Icon = icon;
+        this.id = id;
+        this.main = main;
+        this.description = description;
+        this.icon = icon;
     }
 }

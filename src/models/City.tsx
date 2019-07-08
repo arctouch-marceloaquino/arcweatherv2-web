@@ -1,19 +1,14 @@
-import { Coordinate } from "./Coordinate";
+export default class City {
 
-export class City {
-
-    Id: number;
-    Name: string;
-    Coord: Coordinate;
-    Country: string;
+    id: number;
+    name: string;
+    coord: { lat: number, lon: number};
+    country: string;
     
-    /**
-     * The purpose of this class is to represent the city 
-     */
-    constructor(id:number, name:string, coord: Coordinate, country:string) {
-        this.Id = id;
-        this.Name = name;
-        this.Coord = coord;
-        this.Country = country;
+    constructor(id:number, name:string, coord: { lat: number, lon: number}, country:string) {
+        this.id = id;
+        this.name = name;
+        this.coord = coord;
+        this.country = country;
     }
 }

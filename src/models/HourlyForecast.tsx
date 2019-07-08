@@ -1,25 +1,21 @@
-import { Coordinate } from './Coordinate';
-import { City } from './City';
-import { Weather } from './Weather';
+import Weather from './Weather';
+import City from './City';
 
-export class HourlyForecast {
+export default class HourlyForecast {
 
-    City: City;
-    Coord: Coordinate;
-    Code: number;
-    Message: number;
-    CNT: number;
-    List: Weather[];
-    
-    /**
-     * The purpose of this class is to represent the hourly weather forecast
-     */
-    constructor(city:City, coord:Coordinate, code:number, message:number, cnt:number, list:Weather[])  {
-        this.City = city;
-        this.Coord = coord;
-        this.Code = code;
-        this.Message = message;
-        this.CNT = cnt;
-        this.List = list;
+    city: City;
+    coord: { lat: number, lon: number};
+    code: number;
+    message: number;
+    cnt: number;
+    list: Weather[];
+
+    constructor(city:City, coord:{ lat: number, lon: number}, code:number, message:number, cnt:number, list:Weather[])  {
+        this.city = city;
+        this.coord = coord;
+        this.code = code;
+        this.message = message;
+        this.cnt = cnt;
+        this.list = list;
     }
 }
