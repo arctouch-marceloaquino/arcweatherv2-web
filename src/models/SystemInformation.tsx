@@ -1,14 +1,11 @@
 export default class SystemInformation {
+    country: string;
+    sunrise: number;
+    sunset: number;
 
-    id: number;
-    main: string;
-    description: string;
-    icon: string;
-
-    constructor(id: number, main:string, description:string, icon:string) {
-        this.id = id;
-        this.main = main;
-        this.description = description;
-        this.icon = icon;
+    constructor(country:string, sunrise:number, sunset:number) {
+        this.country = country;
+        this.sunrise = sunrise;
+        this.sunset = sunset;
     }
 }

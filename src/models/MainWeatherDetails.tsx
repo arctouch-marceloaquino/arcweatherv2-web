@@ -1,23 +1,16 @@
 export default class MainWeatherDetails {
 
-    temp: number;
+    temperature: number;
     pressure: number;
     humidity: number;
-    tempMin: number;
-    tempMax: number;
-    seaLevel: number;
-    grndLevel: number;
-    tempKf: number;
+    temperatureMin: number;
+    temperatureMax: number;
 
-    constructor(temp: number, pressure: number, humidity:number, tempMin:number, 
-                tempMax: number, seaLevel: number, grndLevel:number, tempKf:number) {
-        this.temp = temp;
+    constructor(temperature: number, pressure: number, humidity:number, temperatureMin:number, temperatureMax: number) {
+        this.temperature = temperature;
         this.pressure = pressure;
         this.humidity = humidity;
-        this.tempMin = tempMin;
-        this.tempMax = tempMax;
-        this.seaLevel = seaLevel;
-        this.grndLevel = grndLevel;
-        this.tempKf = tempKf;
+        this.temperatureMin = temperatureMin;
+        this.temperatureMax = temperatureMax;
     }
 }

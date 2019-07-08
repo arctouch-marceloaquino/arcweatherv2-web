@@ -1,21 +1,20 @@
 import Weather from './Weather';
 import City from './City';
+import { Coordinate } from './Types/Coordinate';
 
 export default class HourlyForecast {
 
     city: City;
-    coord: { lat: number, lon: number};
+    coord: Coordinate;
     code: number;
     message: number;
-    cnt: number;
     list: Weather[];
 
-    constructor(city:City, coord:{ lat: number, lon: number}, code:number, message:number, cnt:number, list:Weather[])  {
+    constructor(city:City, coord:Coordinate, code:number, message:number, list:Weather[])  {
         this.city = city;
         this.coord = coord;
         this.code = code;
         this.message = message;
-        this.cnt = cnt;
         this.list = list;
     }
 }
