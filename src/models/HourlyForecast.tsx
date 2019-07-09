@@ -1,6 +1,6 @@
 import Weather from './Weather';
 import City from './City';
-import { Coordinate } from './Types/Coordinate';
+import { Coordinate } from './Types/Common';
 
 export default class HourlyForecast {
 

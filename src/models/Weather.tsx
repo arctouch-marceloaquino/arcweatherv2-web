@@ -1,8 +1,7 @@
 import WeatherDetails from './WeatherDetails';
 import MainWeatherDetails from './MainWeatherDetails';
 import SystemInformation from './SystemInformation';
-import { Coordinate } from './Types/Coordinate';
-import { Wind } from './Types/Wind';
+import { Coordinate, Wind } from './Types/Common';
 
 export default class Weather {
 

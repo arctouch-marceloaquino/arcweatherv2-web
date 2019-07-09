@@ -1,4 +1,4 @@
-import { Coordinate } from "./Types/Coordinate";
+import { Coordinate } from "./Types/Common";
 
 export default class City {
 
