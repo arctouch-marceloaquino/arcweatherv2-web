@@ -77,7 +77,7 @@
 }
 
 .FreshInstallPage-nextButton--disabled {
-    display: none !important;
+    display: none;
 }
 
 .FreshInstallPage-description {
@@ -91,7 +91,7 @@
 }
 
 @media only screen and (max-width: 320px) {
-    .DivNext {
+    .FreshInstallPage-next {
         padding-top: 20vh;
     }
 }
