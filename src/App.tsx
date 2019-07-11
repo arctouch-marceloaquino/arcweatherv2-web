@@ -1,14 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import FreshInstallPage from "../src/pages/fresh_install/FreshInstallPage";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        
-      </header>
+      <FreshInstallPage />
     </div>
   );
 }

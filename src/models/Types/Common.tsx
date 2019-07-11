@@ -7,3 +7,8 @@ export type Wind = {
     speed: number;
     deg: number;
 }
+
+export enum TemperatureScale {
+    Celsius,
+    Fahrenheit
+}
