@@ -90,7 +90,7 @@
     margin-left: 10px;
 }
 
-@media only screen and (max-width:320px) {
+@media only screen and (max-width: 320px) {
     .DivNext {
         padding-top: 20vh;
     }
