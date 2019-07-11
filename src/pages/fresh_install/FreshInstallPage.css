@@ -1,0 +1,97 @@
+.FreshInstallPage {
+    min-height: 100vh;
+    max-width: 100%;
+    background-image: url("../../images/bg-settings-first-access@2x.png");
+    background-size: cover;
+}
+
+.FreshInstallPage-buttons {
+    margin-top: 3vh;
+}
+
+.FreshInstallPage-button--default {
+    width: 120px;
+    height: 45px;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+}
+
+.FreshInstallPage-button--active {
+    width: 120px;
+    height: 45px;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.35);
+    display: flex;
+    align-items: center;
+}
+
+.FreshInstallPage-celsiusButton {
+    margin-right: 2rem;
+}
+
+.FreshInstallPage-buttonText--default {
+    width: 120px;
+    height: 25px;
+    color: #2f72bb;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.FreshInstallPage-text--default {
+    font-family: Avenir;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+}
+
+.FreshInstallPage-text--active {
+    color: white;
+}
+
+.FreshInstallPage-nonButtonText--default {
+    display: flex;
+    align-items: center;
+    height: 54px;
+    color: #ffffff;
+}
+
+.FreshInstallPage-content {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.FreshInstallPage-next {
+    padding-top: 26vh;
+}
+
+.FreshInstallPage-nextButton--disabled {
+    display: none;
+}
+
+.FreshInstallPage-description {
+    padding-top: 40vh;
+}
+
+.FreshInstallPage-nextArrow {
+    object-fit: contain;
+    transform: rotate(-180deg);
+    margin-left: 10px;
+}
+
+@media only screen and (max-width: 320px) {
+    .FreshInstallPage-next {
+        padding-top: 20vh;
+    }
+}
