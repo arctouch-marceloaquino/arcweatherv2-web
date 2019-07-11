@@ -2,7 +2,7 @@ import React from 'react';
 import Carousel from "nuka-carousel";
 
 import "./OnboardingPage.css"
-import ArrowToRightIcon from "../../images/path4.svg";
+import ArrowToRightIcon from "../../images/arrow-right.svg";
 
 import OnboardingService from '../../services/OnboardingService'
 
@@ -42,22 +42,27 @@ export default class OnboardingPage extends React.Component<Props, State> {
 
     constructor(props: Props) {
         super(props)
-        this.moveToNextStep = this.moveToNextStep.bind(this)
-        this.finishOnboarding = this.finishOnboarding.bind(this)
+        this.state = {
+            currentIndexCarousel: 0
+        }
         this.onboardingService = new OnboardingService()
     }
 
-    state = {
-        currentIndexCarousel: 0
+    setCurrentIndex(currentIndexCarousel: number) {
+        this.setState({ currentIndexCarousel })
+    }
+
+    isInTheLastStep() {
+        return this.state.currentIndexCarousel === (OnboardingSteps.length - 1)
     }
 
     moveToNextStep() {
-        if (this.state.currentIndexCarousel < (OnboardingSteps.length - 1)) {
+        if (this.isInTheLastStep()) {
+            this.finishOnboarding()
+        } else {
             this.setState({
                 currentIndexCarousel: this.state.currentIndexCarousel + 1
             })
-        } else {
-            this.finishOnboarding()
         }
     }
 
@@ -66,7 +71,7 @@ export default class OnboardingPage extends React.Component<Props, State> {
         //TODO: Go to the Fresh Install Page
     }
 
-    renderOnboardingSteps(): JSX.Element[] {
+    renderOnboardingSteps() {
         return OnboardingSteps.map((step, index) => (
             <img key={index}
                 src={step.imageSrc}
@@ -79,22 +84,21 @@ export default class OnboardingPage extends React.Component<Props, State> {
     renderStepText(): React.ReactNode {
         return (
             <div className="OnboardingPage-content">
-                <span className="OnboardingPage-stepTitle">{OnboardingSteps[this.state.currentIndexCarousel].title}</span>
-                <span className="OnboardingPage-stepDescription">{OnboardingSteps[this.state.currentIndexCarousel].description}</span>
+                <span className="OnboardingPage-textContent OnboardingPage-stepTitle">{OnboardingSteps[this.state.currentIndexCarousel].title}</span>
+                <span className="OnboardingPage-textContent OnboardingPage-stepDescription">{OnboardingSteps[this.state.currentIndexCarousel].description}</span>
             </div>
         )
     }
 
     renderNextButton(): React.ReactNode {
-
         let nextButtonText = "Next"
 
-        if (this.state.currentIndexCarousel === (OnboardingSteps.length - 1))
+        if (this.isInTheLastStep())
             nextButtonText = "Done"
 
         return (
-            <div className="OnboardingPage-content OnboardingPage-content--flex" onClick={this.moveToNextStep} >
-                <span className="OnboardingPage-text">
+            <div className="OnboardingPage-content OnboardingPage-content--flex" onClick={() => this.moveToNextStep()} >
+                <span className="OnboardingPage-textContent OnboardingPage-textButton">
                     {nextButtonText}
                 </span>
                 <img className="OnboardingPage-arrowToRight" src={ArrowToRightIcon} alt="Arrow to Right"></img>
@@ -104,13 +108,13 @@ export default class OnboardingPage extends React.Component<Props, State> {
 
     render() {
         return (<div className="OnboardingPage">
-            <span className="OnboardingPage-skipButton" onClick={this.finishOnboarding}>Skip</span>
+            <span className="OnboardingPage-textContent OnboardingPage-skipButton" onClick={() => this.finishOnboarding()}>Skip</span>
             <Carousel
                 className="OnboardingPage-carousel"
                 renderCenterRightControls={null}
                 renderCenterLeftControls={null}
                 slideIndex={this.state.currentIndexCarousel}
-                afterSlide={currentIndexCarousel => this.setState({ currentIndexCarousel })}
+                afterSlide={currentIndexCarousel => this.setCurrentIndex(currentIndexCarousel)}
             >
                 {this.renderOnboardingSteps()}
             </Carousel>

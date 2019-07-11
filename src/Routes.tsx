@@ -13,7 +13,6 @@ export default () => (
 )
 
 const getMainPage = () => {
-    const onboardingSvc = new OnboardingService()
-
-    return onboardingSvc.isOnboardingFinished() ? HomePage : OnboardingPage
+    const onboardingService = new OnboardingService()
+    return onboardingService.isOnboardingFinished() ? HomePage : OnboardingPage
 }

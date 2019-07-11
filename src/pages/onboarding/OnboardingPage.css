@@ -8,15 +8,9 @@
 .OnboardingPage-skipButton {
     width: 44px;
     height: 27px;
-    font-family: Avenir;
     font-size: 20px;
     font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
     text-align: right;
-    color: #ffffff;
     float: right;
     padding-right: 24px;
     padding-top: 32px;
@@ -37,43 +31,27 @@
     display: flex;
 }
 
-.OnboardingPage-stepTitle {
-    object-fit: contain;
+.OnboardingPage-textContent {
     font-family: Avenir;
-    font-size: 26px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
     text-align: center;
     color: #ffffff;
+}
+
+.OnboardingPage-stepTitle {
+    font-size: 26px;
+    font-weight: 300;
 }
 
 .OnboardingPage-stepDescription {
     display: flex;
-    font-family: Avenir;
     font-size: 18px;
     font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: center;
-    color: #ffffff;
     margin-top: 8px;
 }
 
-.OnboardingPage-text {
-    font-family: Avenir;
+.OnboardingPage-textButton {
     font-size: 20px;
     font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: center;
-    color: #ffffff;
 }
 
 .OnboardingPage-arrowToRight {
