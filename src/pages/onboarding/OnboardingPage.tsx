@@ -1,128 +1,162 @@
-import React from 'react';
+import React from "react";
+import { Redirect } from "react-router-dom";
 import Carousel from "nuka-carousel";
 
-import "./OnboardingPage.css"
+import "./OnboardingPage.css";
 import ArrowToRightIcon from "../../images/arrow-right.svg";
+import OnBoardingImage01 from "../../images/onboarding-image-01.png";
+import OnBoardingImage02 from "../../images/onboarding-image-02.png";
+import OnBoardingImage03 from "../../images/onboarding-image-03.png";
 
-import OnboardingService from '../../services/OnboardingService'
+import OnboardingService from "../../services/OnboardingService";
 
 type Props = {};
 
 type State = {
-    currentIndexCarousel: number
-}
+  currentIndexCarousel: number;
+  shouldFinishOnboarding: boolean;
+};
 
 type OnboardingStep = {
-    title: string,
-    description: string,
-    imageSrc: string
-}
+  title: string;
+  description: string;
+  imageSrc: string;
+};
 
 const OnboardingSteps: OnboardingStep[] = [
-    {
-        title: 'Welcome to ArcWeather',
-        description: 'Your new favorite weather app, with all the features you need to have the best information available.',
-        imageSrc: 'assets/onboarding-image-01.png'
-    },
-    {
-        title: 'Follow different places',
-        description: 'You can easily add as many different locations as you wish.',
-        imageSrc: 'assets/onboarding-image-02.png'
-    },
-    {
-        title: 'Never forget your umbrella',
-        description: 'Accurate weather forecast that you can trust to never get caught in the rain again.',
-        imageSrc: 'assets/onboarding-image-03.png'
-    }
-]
+  {
+    title: "Welcome to ArcWeather",
+    description:
+      "Your new favorite weather app, with all the features you need to have the best information available.",
+    imageSrc: OnBoardingImage01
+  },
+  {
+    title: "Follow different places",
+    description: "You can easily add as many different locations as you wish.",
+    imageSrc: OnBoardingImage02
+  },
+  {
+    title: "Never forget your umbrella",
+    description:
+      "Accurate weather forecast that you can trust to never get caught in the rain again.",
+    imageSrc: OnBoardingImage03
+  }
+];
 
 export default class OnboardingPage extends React.Component<Props, State> {
+  onboardingService: OnboardingService;
 
-    onboardingService: OnboardingService
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      currentIndexCarousel: 0,
+      shouldFinishOnboarding: false
+    };
+    this.onboardingService = new OnboardingService();
+  }
 
-    constructor(props: Props) {
-        super(props)
-        this.state = {
-            currentIndexCarousel: 0
-        }
-        this.onboardingService = new OnboardingService()
+  setCurrentIndex(currentIndexCarousel: number) {
+    this.setState({ currentIndexCarousel });
+  }
+
+  isInTheLastStep() {
+    return this.state.currentIndexCarousel === OnboardingSteps.length - 1;
+  }
+
+  moveToNextStep() {
+    if (this.isInTheLastStep()) {
+      this.finishOnboarding();
+    } else {
+      this.setState({
+        currentIndexCarousel: this.state.currentIndexCarousel + 1
+      });
     }
+  }
 
-    setCurrentIndex(currentIndexCarousel: number) {
-        this.setState({ currentIndexCarousel })
+  finishOnboarding() {
+    this.onboardingService.setOnboardingFinished();
+    this.setState({ shouldFinishOnboarding: true });
+  }
+
+  renderOnboardingSteps() {
+    return OnboardingSteps.map((step, index) => (
+      <img
+        key={index}
+        src={step.imageSrc}
+        alt={step.title}
+        title={step.title}
+      />
+    ));
+  }
+
+  renderStepText(): React.ReactNode {
+    return (
+      <div className="OnboardingPage-content">
+        <span className="OnboardingPage-textContent OnboardingPage-stepTitle">
+          {OnboardingSteps[this.state.currentIndexCarousel].title}
+        </span>
+        <span className="OnboardingPage-textContent OnboardingPage-stepDescription">
+          {OnboardingSteps[this.state.currentIndexCarousel].description}
+        </span>
+      </div>
+    );
+  }
+
+  renderNextButton(): React.ReactNode {
+    let nextButtonText = "Next";
+
+    if (this.isInTheLastStep()) nextButtonText = "Done";
+
+    return (
+      <div
+        className="OnboardingPage-content OnboardingPage-content--flex"
+        onClick={() => this.moveToNextStep()}
+      >
+        <span className="OnboardingPage-textContent OnboardingPage-textButton">
+          {nextButtonText}
+        </span>
+        <img
+          className="OnboardingPage-arrowToRight"
+          src={ArrowToRightIcon}
+          alt="Arrow to Right"
+        />
+      </div>
+    );
+  }
+
+  renderRedirect(): React.ReactNode {
+    if (this.state.shouldFinishOnboarding) {
+      return <Redirect to="/fresh-install" />;
     }
+  }
 
-    isInTheLastStep() {
-        return this.state.currentIndexCarousel === (OnboardingSteps.length - 1)
-    }
+  render() {
+    return (
+      <div className="OnboardingPage">
+        {this.renderRedirect()}
 
-    moveToNextStep() {
-        if (this.isInTheLastStep()) {
-            this.finishOnboarding()
-        } else {
-            this.setState({
-                currentIndexCarousel: this.state.currentIndexCarousel + 1
-            })
-        }
-    }
+        <span
+          className="OnboardingPage-textContent OnboardingPage-skipButton"
+          onClick={() => this.finishOnboarding()}
+        >
+          Skip
+        </span>
+        <Carousel
+          className="OnboardingPage-carousel"
+          renderCenterRightControls={null}
+          renderCenterLeftControls={null}
+          slideIndex={this.state.currentIndexCarousel}
+          afterSlide={currentIndexCarousel =>
+            this.setCurrentIndex(currentIndexCarousel)
+          }
+        >
+          {this.renderOnboardingSteps()}
+        </Carousel>
 
-    finishOnboarding() {
-        this.onboardingService.setOnboardingFinished()
-        //TODO: Go to the Fresh Install Page
-    }
+        {this.renderStepText()}
 
-    renderOnboardingSteps() {
-        return OnboardingSteps.map((step, index) => (
-            <img key={index}
-                src={step.imageSrc}
-                alt={step.title}
-                title={step.title}
-            />
-        ))
-    }
-
-    renderStepText(): React.ReactNode {
-        return (
-            <div className="OnboardingPage-content">
-                <span className="OnboardingPage-textContent OnboardingPage-stepTitle">{OnboardingSteps[this.state.currentIndexCarousel].title}</span>
-                <span className="OnboardingPage-textContent OnboardingPage-stepDescription">{OnboardingSteps[this.state.currentIndexCarousel].description}</span>
-            </div>
-        )
-    }
-
-    renderNextButton(): React.ReactNode {
-        let nextButtonText = "Next"
-
-        if (this.isInTheLastStep())
-            nextButtonText = "Done"
-
-        return (
-            <div className="OnboardingPage-content OnboardingPage-content--flex" onClick={() => this.moveToNextStep()} >
-                <span className="OnboardingPage-textContent OnboardingPage-textButton">
-                    {nextButtonText}
-                </span>
-                <img className="OnboardingPage-arrowToRight" src={ArrowToRightIcon} alt="Arrow to Right"></img>
-            </div>
-        )
-    }
-
-    render() {
-        return (<div className="OnboardingPage">
-            <span className="OnboardingPage-textContent OnboardingPage-skipButton" onClick={() => this.finishOnboarding()}>Skip</span>
-            <Carousel
-                className="OnboardingPage-carousel"
-                renderCenterRightControls={null}
-                renderCenterLeftControls={null}
-                slideIndex={this.state.currentIndexCarousel}
-                afterSlide={currentIndexCarousel => this.setCurrentIndex(currentIndexCarousel)}
-            >
-                {this.renderOnboardingSteps()}
-            </Carousel>
-
-            {this.renderStepText()}
-
-            {this.renderNextButton()}
-        </div>);
-    }
-
+        {this.renderNextButton()}
+      </div>
+    );
+  }
 }
