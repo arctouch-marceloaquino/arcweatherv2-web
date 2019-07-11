@@ -1,12 +1,15 @@
-.DivButtons {
+.FreshInstallPage {
+    min-height: 100vh;
+    max-width: 100%;
+    background-image: url("../../images/bg-settings-first-access@2x.png");
+    background-size: cover;
+}
+
+.FreshInstallPage-buttons {
     margin-top: 3vh;
 }
 
-.ButtonCelsius {
-    margin-right: 2rem;
-}
-
-.Button {
+.FreshInstallPage-button--default {
     width: 120px;
     height: 45px;
     object-fit: contain;
@@ -17,7 +20,7 @@
     align-items: center;
 }
 
-.ButtonActive {
+.FreshInstallPage-button--active {
     width: 120px;
     height: 45px;
     object-fit: contain;
@@ -28,36 +31,19 @@
     align-items: center;
 }
 
-.DivContent {
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.FreshInstallPage-celsiusButton {
+    margin-right: 2rem;
 }
 
-.Next {
-    display: flex;
-    align-items: center;
-    height: 54px;
-    color: #ffffff;
+.FreshInstallPage-buttonText--default {
+    width: 120px;
+    height: 25px;
+    color: #2f72bb;
+    display: inline-block;
+    vertical-align: middle;
 }
 
-.DivNext {
-    padding-top: 26vh;
-}
-
-.Description {
-    display: flex;
-    align-items: center;
-    height: 54px;
-    color: #ffffff;
-}
-
-.DivDescription {
-    padding-top: 40vh;
-}
-
-.Text {
+.FreshInstallPage-text--default {
     font-family: Avenir;
     font-size: 20px;
     font-weight: 500;
@@ -68,26 +54,37 @@
     text-align: center;
 }
 
-.ButtonText {
-    width: 120px;
-    height: 25px;
-    color: #2f72bb;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.TextActive {
+.FreshInstallPage-text--active {
     color: white;
 }
 
-.FreshInstallPage {
-    min-height: 100vh;
-    max-width: 100%;
-    background-image: url("../../images/bg-settings-first-access@2x.png");
-    background-size: cover;
+.FreshInstallPage-nonButtonText--default {
+    display: flex;
+    align-items: center;
+    height: 54px;
+    color: #ffffff;
 }
 
-.Path4 {
+.FreshInstallPage-content {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.FreshInstallPage-next {
+    padding-top: 26vh;
+}
+
+.FreshInstallPage-nextButton--disabled {
+    display: none !important;
+}
+
+.FreshInstallPage-description {
+    padding-top: 40vh;
+}
+
+.FreshInstallPage-nextArrow {
     object-fit: contain;
     transform: rotate(-180deg);
     margin-left: 10px;
