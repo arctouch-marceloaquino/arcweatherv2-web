@@ -89,7 +89,7 @@ export default class OnboardingPage extends React.Component<Props, State> {
     ));
   }
 
-  renderStepText(): React.ReactNode {
+  renderStepText() {
     return (
       <div className="OnboardingPage-content">
         <span className="OnboardingPage-textContent OnboardingPage-stepTitle">
@@ -102,7 +102,7 @@ export default class OnboardingPage extends React.Component<Props, State> {
     );
   }
 
-  renderNextButton(): React.ReactNode {
+  renderNextButton() {
     let nextButtonText = "Next";
 
     if (this.isInTheLastStep()) nextButtonText = "Done";
@@ -124,7 +124,7 @@ export default class OnboardingPage extends React.Component<Props, State> {
     );
   }
 
-  renderRedirect(): React.ReactNode {
+  renderRedirect() {
     if (this.state.shouldFinishOnboarding) {
       return <Redirect to="/fresh-install" />;
     }
