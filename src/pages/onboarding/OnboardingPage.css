@@ -1,0 +1,60 @@
+.OnboardingPage {
+    min-height: 100vh;
+    max-width: 100%;
+    background-image: url("../../images/bg-onboarding@2x.png");
+    background-size: cover;
+}
+
+.OnboardingPage-skipButton {
+    width: 44px;
+    height: 27px;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: right;
+    float: right;
+    padding-right: 24px;
+    padding-top: 32px;
+}
+
+.OnboardingPage-carousel {
+    clear: both;
+}
+
+.OnboardingPage-content {
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+    padding: 18px;
+}
+
+.OnboardingPage-content--flex {
+    display: flex;
+}
+
+.OnboardingPage-textContent {
+    font-family: Avenir;
+    text-align: center;
+    color: #ffffff;
+}
+
+.OnboardingPage-stepTitle {
+    font-size: 26px;
+    font-weight: 300;
+}
+
+.OnboardingPage-stepDescription {
+    display: flex;
+    font-size: 18px;
+    font-weight: 300;
+    margin-top: 8px;
+}
+
+.OnboardingPage-textButton {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.OnboardingPage-arrowToRight {
+    object-fit: contain;
+    margin-left: 10px;
+}

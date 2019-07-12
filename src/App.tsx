@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 
-import FreshInstallPage from "../src/pages/fresh_install/FreshInstallPage";
+import Routes from './Routes'
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <FreshInstallPage />
+      <Routes />
     </div>
   );
 }
